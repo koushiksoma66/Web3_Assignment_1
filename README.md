@@ -25,7 +25,7 @@ Break the loop after the target is reached
 
 
 ## Coinbase Transaction
-Only the given data has been used in the entire Serialised Coinbase Transaction<br>
+I directly used the given data in output.txt in the assignment for the entire Serialised Coinbase Transaction<br>
 
 ## Transaction IDs
 The first transaction id is the txid of the coinbase transaction followed by all the valid transaction ids
