@@ -69,8 +69,9 @@ header_without_nonce = version+previous_block_hash+ merkle_root+time_stamp # Non
 ## Nonce calculation
 
 while True:  # Can't write it as "while header_hash>difficuly_target" since, for that header_hash must be declared outside the loop
-    header = header_without_nonce + str(hex(nonce)) 
-    header_hash = hash(header)
+    header = header_without_nonce + str(hex(nonce))
+    header_bytes = f'{header.encode()}'
+    header_hash = hash(header_bytes)
     if int(header_hash,16)<int(difficulty_target,16): break
     nonce += 1
 
