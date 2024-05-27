@@ -22,3 +22,10 @@ Keep doing this till the size is decreased to just 1 which is the merkel root.<b
 Concatinate all the header components except nonce which is intially set to zero.<br>
 Concatinate the nonce inside the loop as the header hash must keep updating along with nonce.<br>
 Break the loop after the target is reached
+
+
+## Coinbase Transaction
+Only the given data has been used in the entire Serialised Coinbase Transaction<br>
+
+## Transaction IDs
+The first transaction id is the txid of the coinbase transaction followed by all the valid transaction ids
