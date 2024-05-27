@@ -28,7 +28,7 @@ def cal_merkel_root(valid_txid_list):
 
     while(len(valid_txid_hashes)>1):
         temp_list = []
-        for i in range(0,len(valid_txid_hashes),2):
+        for i in range(0,len(valid_txid_hashes),2):  #Takes steps of size 2
             if i==(len(valid_txid_hashes)-1): temp_list.append(hash(valid_txid_hashes[i]+valid_txid_hashes[i]))
             else: temp_list.append(hash(valid_txid_hashes[i]+valid_txid_hashes[i+1]))
         valid_txid_hashes = temp_list
@@ -37,8 +37,8 @@ def cal_merkel_root(valid_txid_list):
 
     
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
-mempool_path = os.path.join(current_directory, 'mempool')
+current_directory = os.path.dirname(os.path.abspath(__file__))  # Gives the path of the current directory
+mempool_path = os.path.join(current_directory, 'mempool') # Gives the path of the file/folder named mempool in the current directory
 mempool = os.listdir(mempool_path) # Makes a list of name of all the files in the mempool
 
 
@@ -48,7 +48,7 @@ for file_name in mempool:
     with open(os.path.join(mempool_path,file_name),'r') as file:
         transaction = json.load(file)
         if(validate(transaction)):
-            valid_txid_list.append(file_name.split('.')[0])
+            valid_txid_list.append(file_name.split('.')[0]) # Removes .json extension from the file name
 
 
 merkle_root_ = cal_merkel_root(valid_txid_list)
@@ -59,12 +59,12 @@ merkle_root_ = cal_merkel_root(valid_txid_list)
 version = "01000000"
 previous_block_hash = "0000000000000000000000000000000000000000000000000000000000000000"
 merkle_root = f"{merkle_root_}"
-time_stamp = f'{hex(int(time.time())).split('x')[1]}' #Converted the time_stamp into hexadecimal and removed the 0x part in the beginning
+time_stamp = f'{hex(int(time.time())).split('x')[1]}' # Converted the time_stamp into hexadecimal and removed the 0x part in the beginning
 difficulty_target = "0000ffff00000000000000000000000000000000000000000000000000000000"
 nonce = 0
 
 # Concating header components
-header_without_nonce = version+previous_block_hash+ merkle_root+time_stamp
+header_without_nonce = version+previous_block_hash+ merkle_root+time_stamp # Nonce should be added inside the loop so that the header_hash can get updated in each iteration
 
 ## Nonce calculation
 
