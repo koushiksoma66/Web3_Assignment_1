@@ -2,6 +2,7 @@
 
 ## Extracting all the transaction files in the mempool
 For this I imported the os library with which I could list out all the names of the files in the mempool directory using the listdir() function in os.<br>
+For getting the path of mempool I first brought the mempool folder to the directory I am working on then, used 'path.abs.path(__file__)' function to get the path of current directory then used path.join(current_directory,'mempool') which gives the path of the file/folder with the name 'mempool' in the current_directory.<br>
 As we can't open a file just with its name I had to use the path.join(mempool_path,file_name) function which gives the path of the file in mempool whose name is mempool_path.<br>
 Open this files in reading mode using with <b>open(file_path,'r') as file:</b>  This is the best way since it automatically closes the file after exiting from its scope.<br>
 
